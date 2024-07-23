@@ -23,8 +23,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run RenderCV
         run: |
-          rendercv render Bruno_Garrofe_CV.yaml
+          rendercv render ../Bruno_Garrofe_CV.yaml
       - name: Upload CV
         uses: actions/upload-artifact@v4
         with:
-          path: dist/Bruno_Garrofe_CV.pdf
+          path: rendercv_output/Bruno_Garrofe_CV.pdf
