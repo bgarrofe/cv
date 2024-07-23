@@ -1,4 +1,4 @@
-name: Test
+name: Deploy CV
 
 # GitHub events that triggers the workflow:
 on:
@@ -20,5 +20,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run RenderCV
+        run: |
+          rendercv render Bruno_Garrofe_CV.yaml
+      - name: Upload CV
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist/Bruno_Garrofe_CV.pdf
